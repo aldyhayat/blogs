@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row clearfix">
+      <div class="col-lg-8 col-md-12 left-box">
+          {% for post in post_list %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+            <p class="card-text">{{post.content|slice:":200"}}</p>
+            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>          </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% include 'sidebar.html' %} 
+    </div>
+    </div>
+  </div>
+{% endblock %}
